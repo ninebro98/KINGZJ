@@ -76,12 +76,30 @@
       text-align: left;
     }
 
-    /* 🎬 视频 */
-    video {
+    /* 🎬 视频柔光融合效果 */
+    .video-wrapper {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      filter: brightness(1.05) saturate(1.15);
+    }
+    .video-wrapper video {
       width: 70%;
       max-width: 500px;
-      border-radius: 12px;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+      border-radius: 18px;
+      display: block;
+    }
+    /* 🌸 粉金柔光层（叠加在视频上） */
+    .video-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(255,192,203,0.25), rgba(255,228,225,0.3));
+      mix-blend-mode: soft-light;
     }
 
     footer {
@@ -125,7 +143,7 @@
     /* 📱 手机端适配 */
     @media (max-width: 768px) {
       body {
-        background-attachment: scroll; /* 避免手机上背景错位 */
+        background-attachment: scroll;
         background-position: center;
       }
       h1 {
@@ -142,7 +160,7 @@
         font-size: 1rem;
         text-align: center;
       }
-      video {
+      .video-wrapper video {
         width: 90%;
         max-width: 100%;
       }
@@ -187,11 +205,13 @@
     <!-- 左侧打字机祝福 -->
     <div class="typewriter" id="typewriter"></div>
 
-    <!-- 右侧视频 -->
-    <video autoplay muted loop playsinline>
-      <source src="love.mp4" type="video/mp4">
-      你的浏览器不支持播放视频。
-    </video>
+    <!-- 右侧视频（柔光融合效果容器） -->
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="love.mp4" type="video/mp4">
+        你的浏览器不支持播放视频。
+      </video>
+    </div>
   </main>
 
   <footer>
@@ -199,7 +219,7 @@
   </footer>
 
   <script>
-    // ✍️ 打字机效果（换行修复完成）
+    // ✍️ 打字机效果
     const messages = [
       "愿小宝塔塔永远笑得像春天🌸",
       "愿岁月温柔待你，如我眼中柔光✨",
