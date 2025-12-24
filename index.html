@@ -13,7 +13,7 @@
   <link href="https://cdn.jsdelivr.net/gh/lxgw/LxgwWenKai@latest/style.css" rel="stylesheet">
 
   <style>
-    /* 🌸 背景样式 */
+    /* 🌸 背景 */
     body {
       margin: 0;
       background: url("Christmas tree.png") no-repeat center center fixed;
@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* 柔光遮罩层 */
+    /* 柔光层 */
     body::before {
       content: "";
       position: fixed;
@@ -42,16 +42,17 @@
       z-index: 1;
     }
 
-    /* 🌸 标题 */
+    /* 🌸 标题单行居中 */
     h1 {
       width: 100%;
       text-align: center;
       font-family: 'Tangerine', 'LXGW WenKai', cursive;
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       color: #e697ab;
-      letter-spacing: 0.03em;
-      margin: 2rem 1rem;
+      letter-spacing: 0.05em;
+      margin: 2.2rem 0 2rem 0;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     /* 🌷 主体布局 */
@@ -76,20 +77,21 @@
       text-align: left;
     }
 
-    /* 🎬 视频柔光融合效果 */
+    /* 🎬 视频柔光融合 */
     .video-wrapper {
       position: relative;
       border-radius: 18px;
       overflow: hidden;
       filter: brightness(1.05) saturate(1.15);
     }
+
     .video-wrapper video {
       width: 70%;
       max-width: 500px;
       border-radius: 18px;
       display: block;
     }
-    /* 🌸 粉金柔光层（叠加在视频上） */
+
     .video-wrapper::after {
       content: "";
       position: absolute;
@@ -102,6 +104,7 @@
       mix-blend-mode: soft-light;
     }
 
+    /* 💖 底部文字 */
     footer {
       text-align: center;
       font-size: 1rem;
@@ -147,8 +150,8 @@
         background-position: center;
       }
       h1 {
-        font-size: 2.4rem;
-        margin-bottom: 1.5rem;
+        font-size: 2.2rem;
+        margin: 1.5rem 0;
       }
       main {
         flex-direction: column;
@@ -172,19 +175,23 @@
 </head>
 <body>
 
-  <!-- 背景音乐 -->
-  <audio id="bgm" autoplay loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes_Music/Christmas_Music/Scott_Holmes_Music_-_Christmas_Morning.mp3" type="audio/mpeg">
+  <!-- 🌹 背景音乐 -->
+  <audio id="bgm" autoplay loop playsinline>
+    <source src="Lasting-Memories.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // 🎵 音乐淡入
+    // 🎵 音乐淡入 + 移动端激活兼容
     const bgm = document.getElementById('bgm');
     bgm.volume = 0;
     let vol = 0;
-    const fade = setInterval(() => {
-      if (vol < 0.3) { vol += 0.02; bgm.volume = vol; } else { clearInterval(fade); }
+    const fadeIn = setInterval(() => {
+      if (vol < 0.4) { vol += 0.02; bgm.volume = vol; } else { clearInterval(fadeIn); }
     }, 300);
+
+    document.addEventListener('click', () => {
+      if (bgm.paused) bgm.play();
+    }, { once: true });
 
     // 💕 爱心漂浮动画
     const colors = ['rgba(255,182,193,0.25)', 'rgba(255,192,203,0.3)', 'rgba(255,205,210,0.35)'];
@@ -205,7 +212,7 @@
     <!-- 左侧打字机祝福 -->
     <div class="typewriter" id="typewriter"></div>
 
-    <!-- 右侧视频（柔光融合效果容器） -->
+    <!-- 右侧视频（柔光融合） -->
     <div class="video-wrapper">
       <video autoplay muted loop playsinline>
         <source src="love.mp4" type="video/mp4">
