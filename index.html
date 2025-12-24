@@ -1,260 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>九哥哥希望小宝塔塔永远健康快乐</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎄 ZJ ❤️ ZHY — Our Christmas Memory</title>
 
-  <!-- PicoCSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
-  <!-- 引入浪漫字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/lxgw/LxgwWenKai@latest/style.css" rel="stylesheet">
-
-  <style>
-    /* 🌸 背景 */
-    body {
-      margin: 0;
-      background: url("Christmas tree.png") no-repeat center center fixed;
-      background-size: cover;
-      color: #5a4a4a;
-      font-family: 'LXGW WenKai', 'Playfair Display', serif;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* 柔光层 */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 245, 248, 0.55);
-      backdrop-filter: blur(4px);
-      z-index: 0;
-    }
-
-    main, footer, h1 {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* 🌸 标题单行居中 */
-    h1 {
-      width: 100%;
-      text-align: center;
-      font-family: 'Tangerine', 'LXGW WenKai', cursive;
-      font-size: 3.4rem;
-      color: #e697ab;
-      letter-spacing: 0.05em;
-      margin: 2.2rem 0 2rem 0;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    /* 🌷 主体布局 */
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 3rem;
-      flex-wrap: wrap;
-      padding: 2rem;
-    }
-
-    /* ✍️ 打字机文字 */
-    .typewriter {
-      width: 320px;
-      font-size: 1.1rem;
-      color: #7a5f65;
-      line-height: 1.8;
-      white-space: pre-wrap;
-      font-family: 'LXGW WenKai', serif;
-      letter-spacing: 0.02em;
-      text-align: left;
-    }
-
-    /* 🎬 视频柔光融合 */
-    .video-wrapper {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      filter: brightness(1.05) saturate(1.15);
-    }
-
-    .video-wrapper video {
-      width: 70%;
-      max-width: 500px;
-      border-radius: 18px;
-      display: block;
-    }
-
-    .video-wrapper::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: linear-gradient(120deg, rgba(255,192,203,0.25), rgba(255,228,225,0.3));
-      mix-blend-mode: soft-light;
-    }
-
-    /* 💖 底部文字 */
-    footer {
-      text-align: center;
-      font-size: 1rem;
-      color: #9c7b83;
-      margin: 3rem 0;
-      font-style: italic;
-      font-family: 'LXGW WenKai', serif;
-    }
-
-    /* 💗 爱心漂浮 */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      width: 14px;
-      height: 14px;
-      background: rgba(255,182,193,0.3);
-      transform: rotate(45deg);
-      animation: floatUp 10s ease-in infinite;
-      opacity: 0.6;
-      z-index: 1;
-    }
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      background: rgba(255,182,193,0.3);
-      border-radius: 50%;
-    }
-    .heart::before { top: -7px; left: 0; }
-    .heart::after { left: -7px; top: 0; }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0.6; }
-      100% { transform: translateY(-100vh) rotate(45deg) scale(1.2); opacity: 0; }
-    }
-
-    /* 📱 手机端适配 */
-    @media (max-width: 768px) {
-      body {
-        background-attachment: scroll;
-        background-position: center;
-      }
-      h1 {
-        font-size: 2.2rem;
-        margin: 1.5rem 0;
-      }
-      main {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-      }
-      .typewriter {
-        width: 90%;
-        font-size: 1rem;
-        text-align: center;
-      }
-      .video-wrapper video {
-        width: 90%;
-        max-width: 100%;
-      }
-      footer {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+  <!-- 样式 -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 封面页 -->
+  <section id="cover" class="cover active">
+    <div class="cover-content">
+      <h1>🎄 ZJ ❤️ ZHY — Our Christmas Memory</h1>
+      <button id="enterBtn">✨ Tap to Begin ✨</button>
+    </div>
+  </section>
 
-  <!-- 🌹 背景音乐 -->
-  <audio id="bgm" autoplay loop playsinline>
-    <source src="Lasting-Memories.mp3" type="audio/mpeg">
-  </audio>
+  <!-- 主内容 -->
+  <main id="mainContent" class="hidden">
+    <h1 class="main-title">🎄 ZJ ❤️ ZHY — Our Christmas Memory</h1>
 
-  <script>
-    // 🎵 音乐淡入 + 移动端激活兼容
-    const bgm = document.getElementById('bgm');
-    bgm.volume = 0;
-    let vol = 0;
-    const fadeIn = setInterval(() => {
-      if (vol < 0.4) { vol += 0.02; bgm.volume = vol; } else { clearInterval(fadeIn); }
-    }, 300);
-
-    document.addEventListener('click', () => {
-      if (bgm.paused) bgm.play();
-    }, { once: true });
-
-    // 💕 爱心漂浮动画
-    const colors = ['rgba(255,182,193,0.25)', 'rgba(255,192,203,0.3)', 'rgba(255,205,210,0.35)'];
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.background = colors[Math.floor(Math.random() * colors.length)];
-      heart.style.animationDuration = (8 + Math.random() * 4) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 12000);
-    }, 700);
-  </script>
-
-  <main>
-    <h1>九哥哥希望小宝塔塔永远健康快乐</h1>
-
-    <!-- 左侧打字机祝福 -->
     <div class="typewriter" id="typewriter"></div>
 
-    <!-- 右侧视频（柔光融合） -->
     <div class="video-wrapper">
       <video autoplay muted loop playsinline>
-        <source src="love.mp4" type="video/mp4">
-        你的浏览器不支持播放视频。
+        <source src="love.mp4" type="video/mp4" />
       </video>
     </div>
+
+    <footer>From ZJ — To ZHY ♡</footer>
   </main>
 
-  <footer>
-    From 九哥哥 — To 小宝塔塔 ♡
-  </footer>
+  <!-- 背景音乐 -->
+  <audio id="bgm" loop>
+    <source src="Lasting-Memories.mp3" type="audio/mpeg" />
+  </audio>
 
-  <script>
-    // ✍️ 打字机效果
-    const messages = [
-      "愿小宝塔塔永远笑得像春天🌸",
-      "愿岁月温柔待你，如我眼中柔光✨",
-      "你的微笑，是我每日的星光💫",
-      "健康与平安，永远环绕你🌷",
-      "有你的世界，才完整💖",
-      "圣诞快乐，我最爱的塔塔🎄"
-    ];
-
-    const typewriter = document.getElementById("typewriter");
-    let msgIndex = 0, charIndex = 0;
-
-    function typeEffect() {
-      if (msgIndex < messages.length) {
-        const msg = messages[msgIndex];
-        if (charIndex < msg.length) {
-          typewriter.innerHTML += msg.charAt(charIndex);
-          charIndex++;
-          setTimeout(typeEffect, 60);
-        } else {
-          typewriter.innerHTML += "<br>";
-          msgIndex++;
-          charIndex = 0;
-          setTimeout(typeEffect, 1200);
-        }
-      }
-    }
-    typeEffect();
-  </script>
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
